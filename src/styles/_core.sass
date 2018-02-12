@@ -1,0 +1,133 @@
+.Item
+	width: 335px
+	height: 450px
+	border: 1px solid #ff1943
+	margin: auto
+	padding: 0 40px
+	&__shopMerch
+		margin: 10px 0 5px
+	&-product
+		width: 254px
+		height: 368px
+		box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3)
+		background-color: #ffffff
+		position: relative
+		&__sale
+			position: absolute
+			top: 15px
+			right: 15px
+			width: 56px
+			height: 22px
+			line-height: 22px
+			text-align: center
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+			border-radius: 58px
+			background-color: #ff1943
+			color: #ffffff
+			font-size: 14px
+			font-weight: 700
+			z-index: 9
+		&-image
+			width: 254px
+			height: 254px
+			overflow: hidden
+			position: relative
+			&__hover
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				z-index: 10
+				background-color: rgba($accent, .9)
+				display: flex
+				justify-content: center
+				align-content: center
+				opacity: 0
+				+tr(opacity .5s)
+				&:hover
+					opacity: 1
+			&__text
+				color: #ffffff
+				font-size: 34px
+				font-weight: 600
+				text-transform: uppercase
+				letter-spacing: 1.14px
+				position: absolute
+				top: 50%
+				z-index: 11
+				transform: translateY(-50%)
+		&__footer
+			padding: 16px
+			position: relative
+		&__title
+			overflow: hidden
+		&-switcher
+			float: right
+			display: inline-block
+			vertical-align: middle
+			line-height: 10px
+			font-size: 0
+			&__color
+				display: inline-block
+				font:  0/0 a
+				width: 14px
+				height: 14px
+				border-radius: 58px
+				line-height: 0
+				margin-left: 8px
+				cursor: pointer
+				position: relative
+				&[data-color="red"]
+					background-color: #fc3868
+					border: 1px solid transparent
+				&[data-color="blue"]
+					background-color: #1c15ab
+					border: 1px solid transparent
+				&[data-color="white"]
+					background-color: #ffffff
+					border: 1px solid #000000
+				&--active[data-color="white"]
+					&:after
+						background-color: #000000
+				&[data-color="green"]
+					background-color: #91b670
+					border: 1px solid transparent
+				
+				&--active
+					&:after
+						content: ''
+						position: absolute
+						top: 3px
+						right: 3px
+						width: 6px
+						height: 6px
+						border-radius: 58px
+						background-color: #ffffff
+		&-price
+			&__new
+				font-size: 20px
+				font-weight: 700
+				color: #262b3a
+				letter-spacing: 0.67px
+				margin: 4px 0
+			&__old		
+				color: $text-light
+				font-size: 14px
+				font-weight: 600
+				letter-spacing: 0.47px
+				margin-top: 9px
+				text-decoration: line-through
+				display: inline-block
+		&__buy
+			position: absolute
+			bottom: 16px
+			right: 16px
+
+	&-footer
+		margin-top: 8px
+		width: 100px
+		height: 15px
+		color: #262b3a
+		font-size: 11px
+		font-weight: 400
