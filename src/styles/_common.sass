@@ -2,9 +2,9 @@
 	box-sizing: border-box
 
 $twitter-colors: #41ABE1
-$facebook: #4867AA
+$facebook: #0067e0
 $vkontakte: #5B7AA8
-$google: #dd4f43
+$google: #d53232
 $base-gap: 6px
 $grey: #eaeaea
 $selected-blue: #228fd8
@@ -19,12 +19,18 @@ $yellow: #feca52
 
 $text-dark: #414141
 $text-light: #a5a5a5
-$text-middle: #262b3a
-$accent: #ff1943
+$text-middle: #697b8c
+$accent: #7186e6
 body
 	line-height: 1.4
 	font-family: 'Open Sans', sans-serif
 	weight: normal
+	color: $text-middle
+
+@for $var from 1 through 6
+	h#{$var},.h#{$var}
+		font-family: "Noto Sans", sans-serif
+
 .h1
 	font-size: 20px
 	color: $text-middle
@@ -172,6 +178,7 @@ input[type="password"]
 	& .help-message
 		height: 0
 		width: 100%
+
 input[disabled='true'],
 input[disabled]
 	opacity: 0.5
@@ -194,7 +201,9 @@ input[type='submit']
 	border-radius: 4px
 	color: #6F6F6F
 	text-align: left
-	overflow: auto
+	overflow: hidden
+	p
+		font-size: 10px
 	& > div p
 		margin: 0
 		font-size: 10px
@@ -331,7 +340,8 @@ input[type='submit']
 
   #{$base}-1-2,
   #{$base}-2-2,
-  #{$base}-3-2
+  #{$base}-3-2,
+  #{$base}-13-2
     align-items: center
 
   #{$base}-1-22,

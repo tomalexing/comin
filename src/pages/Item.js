@@ -50,46 +50,49 @@ export default class Item extends Component {
         let { product, activeColor } = this.state;
 
         return(
-            <div className="Item">
-                <div className="Item__shopMerch"><img src={shop}/></div>
-                <div className="Item-product">
-                    <div className="Item-product__sale">
-                        {product.sale}
-                    </div>
-                    <div className="Item-product-image">
-                        <LazyImage load={product.images[activeColor]}/>
-                        <div className="Item-product-image__hover">
-                            <div className="Item-product-image__text">SALE {product.sale}</div>
+            <div className="Layout-iframe">
+            
+                <div className="Item">
+                    <div className="Item__shopMerch"><img src={shop}/></div>
+                    <div className="Item-product">
+                        <div className="Item-product__sale">
+                            {product.sale}
                         </div>
-                    </div>
-                    <div className="Item-product__footer">
-                        <div className="Item-product-switcher">
-                            {Object.entries(product.images).map((color, idx) => {
-                                return(
-                                    <div key={color[0]} data-color={color[0]} onClick={this.changeColor(color[0])} className={"Item-product-switcher__color" + ((activeColor === color[0])? ' Item-product-switcher__color--active':'')} >{color[0]}</div>
-                                )
-                            })}
+                        <div className="Item-product-image">
+                            <LazyImage load={product.images[activeColor]}/>
+                            <div className="Item-product-image__hover">
+                                <div className="Item-product-image__text">SALE {product.sale}</div>
+                            </div>
                         </div>
-                   
-                        <h2 className="h2 Item-product__title"> {product.title} </h2>
+                        <div className="Item-product__footer">
+                            <div className="Item-product-switcher">
+                                {Object.entries(product.images).map((color, idx) => {
+                                    return(
+                                        <div key={color[0]} data-color={color[0]} onClick={this.changeColor(color[0])} className={"Item-product-switcher__color" + ((activeColor === color[0])? ' Item-product-switcher__color--active':'')} >{color[0]}</div>
+                                    )
+                                })}
+                            </div>
+                    
+                            <h2 className="h2 Item-product__title"> {product.title} </h2>
 
-                        <div className="Item-product-price">
-                            <div className="Item-product-price__old">
-                                {product.priceOld}
+                            <div className="Item-product-price">
+                                <div className="Item-product-price__old">
+                                    {product.priceOld}
+                                </div>
+                                <div className="Item-product-price__new">
+                                    {product.priceNew}
+                                </div>
                             </div>
-                            <div className="Item-product-price__new">
-                                {product.priceNew}
+                            <div className="Item-product__buy">
+                                <a className="btn btn-primiry btn-normal" href={`http://localhost:3000?prod=${ encodeURIComponent(product.sale )}`}>BUY NOW</a>
                             </div>
-                        </div>
-                        <div className="Item-product__buy">
-                            <a className="btn btn-primiry btn-normal" href="http://google.com">BUY NOW</a>
                         </div>
                     </div>
+                    <p className="Item-footer">
+                        Powered by <a href="http://comin.co">Comin</a>
+                    </p>
+
                 </div>
-                <p className="Item-footer">
-                    Powered by <a href="http://comin.co">Comin</a>
-                </p>
-
             </div>
         )
     }
