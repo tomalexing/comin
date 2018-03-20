@@ -23,8 +23,8 @@ import {
 
 class Share extends Component {
   render() {
-    const shareUrl = 'http://github.com';
-    const title = 'GitHub';
+    const shareUrl = 'https://comin.co/cominsystem/';
+    const title = 'CominSystem';
 
     return (
       <div className="Share__container u-my-5">

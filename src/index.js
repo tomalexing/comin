@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import './styles/app.css';
 import './styles/index.css';
+import './styles/modal.css';
 import './polyfill.js';
 
 ReactDOM.render(<App />, document.getElementById('root'));

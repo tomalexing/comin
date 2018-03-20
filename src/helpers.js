@@ -44,7 +44,7 @@ export class LazyImage extends React.Component {
   
     render() {
       let {mod , ...rest} = this.props;
-      return  <div ref={node => this.node = node} />
+      return  <div className="Item__image" ref={node => this.node = node} />
     }
 }
 

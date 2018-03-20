@@ -1,22 +1,55 @@
 .Item
-	width: 335px
+	position: relative
 	height: 450px
-	border: 1px solid #ff1943
+	border: 1px solid rgba(113, 134, 230, 1)
 	margin: auto
-	padding: 0 40px
+	padding: 0 10px
+	overflow: hidden
+	width: 336px
 	&__shopMerch
+		display: block
 		margin: 10px 0 5px
+		img
+			width: 90px
+	&__beta
+		position: absolute
+		top: 0
+		right: 0
+		line-height: 20px
+		height: 20px
+		padding: 0 10px
+		background: #7186E6
+		font-weight: 600
+		font-size: 12px
+		letter-spacing: 1px
+		color: #fff
+	&__image img
+		max-width: 100%
+	&-timer
+		position: absolute
+		top: 40px
+		right: 15px
+	&-stars
+		position: absolute
+		bottom: 20px
+		display: flex
+		flex-direction: row
+		img
+			width: 12px
+			height: 12px
+			margin: 0 5px
 	&-product
 		width: 254px
 		height: 368px
 		box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3)
 		background-color: #ffffff
 		position: relative
+		margin: auto
 		&__sale
 			position: absolute
 			top: 15px
 			right: 15px
-			width: 56px
+			padding: 0 12px
 			height: 22px
 			line-height: 22px
 			text-align: center
@@ -26,7 +59,7 @@
 			color: #ffffff
 			font-size: 14px
 			font-weight: 700
-			z-index: 9
+			z-index: 100
 		&-image
 			width: 254px
 			height: 254px
@@ -49,7 +82,7 @@
 					opacity: 1
 			&__text
 				color: #ffffff
-				font-size: 34px
+				font-size: 20px
 				font-weight: 600
 				text-transform: uppercase
 				letter-spacing: 1.14px
@@ -65,14 +98,12 @@
 		&-switcher
 			float: right
 			display: inline-block
-		&__nofound
 			color: red
 			vertical-align: middle
 			line-height: 10px
 			font-size: 0
 			&__color
 				display: inline-block
-			&__nofound
 				color: red
 				font:  0/0 a
 				width: 14px
@@ -82,11 +113,8 @@
 				margin-left: 8px
 				cursor: pointer
 				position: relative
-				&[data-color="red"]
-					background-color: #fc3868
-					border: 1px solid transparent
 				&[data-color="blue"]
-					background-color: #1c15ab
+					background-color: #226575
 					border: 1px solid transparent
 				&[data-color="white"]
 					background-color: #ffffff
@@ -97,7 +125,27 @@
 				&[data-color="green"]
 					background-color: #91b670
 					border: 1px solid transparent
-				
+				&[data-color="red"]
+					background-color: #A22D34
+					border: 1px solid transparent
+				&[data-color="brown"]
+					background-color: #3E3121
+					border: 1px solid transparent
+				&[data-color="yellow"]
+					background-color: #F2C715
+					border: 1px solid transparent
+				&[data-color="grey"]
+					background-color: #8F9093
+					border: 1px solid transparent
+				&[data-color="black"]
+					background-color: #070B0E
+					border: 1px solid transparent
+				&[data-color="pink"]
+					background-color: #CB6386
+					border: 1px solid transparent
+				&[data-color="beige"]
+					background-color: #C1AB96
+					border: 1px solid transparent
 				&--active
 					&:after
 						content: ''
@@ -138,9 +186,7 @@
 		font-size: 11px
 		font-weight: 400
 
-
 .login
-	
 	&__logo
 		a
 			display: block
@@ -154,7 +200,8 @@
 		margin: 0 10px
 		max-width: 345px
 		height: 100%
-		height: calc(100vh - 80px)
+		height: 100vh
+		min-height: 556px
 		.registform-regist__social
 			width: 100%
 	&__header
@@ -172,18 +219,38 @@
 	&__footer
 		height: 80px
 		position: relative
-		&:before
-			content: ''
-			position: absolute
-			top: 0
-			border: 1px solid #e4e6ea
-			left: -501px
-			width: 2000px
+		&--info
+			height: 180px
+			&:before
+				content: ''
+				position: absolute
+				top: 0
+				left: -501px
+				width: 2000px
+				height: 1px
+				background-color: #c1d2df
+		&-text__copyright
+			font-size: 14px
+			color: #8AA1B7
 		li
 			opacity: .5
 			+tr(opacity .5s)
 			&:hover
 				opacity: 1
+		fieldset
+			border: 1px solid #c1d2df
+			margin: 0
+			padding: 10px
+			border-radius: 4px
+			color: #8AA1B7
+			legend
+				strong
+					padding: 10px
+			p
+				color: #8AA1B7
+				font-size: 12px
+				padding: 0 10px
+
 .App__header
 	width: 100%
 	height: 70px
@@ -239,9 +306,10 @@
 	overflow: hidden
 	&__content
 		margin-left: 170px
-		overflow-y: scroll
+		overflow-y: auto
 		height: 100%
 		margin-right: 250px
+		background-color: #F3F9FF
 		hr
 			height: 2px
 			border: 1px solid #8095ab
@@ -264,6 +332,7 @@
 			padding: 9px 0px
 			height: 49px
 			display: inline-block
+			min-width: 280px
 		&__nofound
 			color: red
 		&__passed
@@ -302,7 +371,7 @@
 	right: 0
 	width: 250px
 	height: 100%
-	box-shadow: 4px 0 20px rgba(72, 80, 121, 0.3)
+	box-shadow: -4px 0 20px rgba(72, 80, 121, 0.3)
 	background-color: #ffffff
 
 .App__sidebar
@@ -342,12 +411,13 @@
 				img
 					height: auto
 					width: 100%
-	&-copyright
-		padding: 10px
+	&-copyright p
 		color: #6b7c93
+		line-height: 16px
 		font-family: "Open Sans"
 		font-size: 12px
 		font-weight: 400
+
 
 
 
@@ -369,3 +439,331 @@
 
 .Share__network__share-button:hover:not(:active)
   opacity: 0.75
+
+
+.Timer
+	display: flex
+	flex-direction: row
+	color: #1d202c
+	font-size: 14px
+	font-weight: 600
+	letter-spacing: 0.47px
+	&__pre
+		padding-right: 5px 
+	&__del
+		padding: 0 1px
+
+.Popup
+	padding: 20px
+	width: 700px
+	color: #000
+	background: #fff
+	&-gallery
+		width: 310px
+		flex: 1 0 310px
+		&__feature
+			display: flex
+			justify-content: center
+			align-items: center
+			border: 1px solid #697b8b
+			height: 310px
+			overflow: hidden
+			&__in
+				position: relative
+				cursor: zoom-in
+				&:hover .Popup-gallery__feature__enlargeRange
+					visibility: visible
+			&__enlargeRange
+				visibility: hidden
+				top: 0
+				left: 0
+				position: absolute
+				width: 60px
+				height: 60px
+				background: rgba(#1e1e1e, .1)
+		&__thumbnail
+			position: relative
+			display: flex
+			flex-direction: row
+			justify-content: space-between
+			margin-top: 9px
+			img
+				object-fit: cover
+				width: 70px
+				height: 70px
+				overflow: hidden
+			&__item
+				cursor: pointer
+			&--active
+				position: relative
+				&:hover:before
+					background-color: #becfde
+				&:before
+					background-color: #7186e6
+					+tr(background-color .5s)
+					content: ''
+					position: absolute
+					bottom: -3px
+					width: 100%
+					height: 4px
+		&__enlarge
+			position: absolute
+			z-index: 10
+			top: 30px
+			width: 300px
+			height: 300px
+			border: 1px solid #697b8b
+			overflow: hidden
+			visibility: hidden
+			z-index: -1
+			background-color: #fff
+			> div
+				position: absolute
+
+			img
+				max-width: none
+
+
+	&-description
+		margin-left: 20px
+		position: relative
+		&__title
+			color: #262b3a
+			font-size: 16px
+			font-weight: 700
+			margin-bottom: 10px
+		&__starev
+			width: 60%
+			display: flex
+			flex-direction: row
+			align-items: center
+			justify-content: space-between
+			margin-bottom: 18px
+		&__star 
+			margin: 0 -3px
+			img
+				width: 12px
+				height: 12px
+				margin: 0 3px
+		&__rev
+			font-size: 14px
+			font-weight: 400
+			line-height: 24px
+	&-cartblock
+		position: relative
+		width: 100%
+		height: 80px
+		border: 1px solid #697b8b
+		background-color: #f2f4ff
+		padding: 10px 17px
+		margin-bottom: 18px
+		&__bestPrice
+			color: #7186e6
+			font-size: 14px
+			font-weight: 700
+		&-price
+			display: flex
+			align-items: flex-end
+			justify-content: flex-start
+			padding-top: 12px
+			&__old
+				color: #697b8c
+				font-size: 14px
+				font-weight: 600
+				letter-spacing: 0.47px
+				text-decoration: line-through
+			&__new
+				padding-left: 12px
+				color: #262b3a
+				font-size: 20px
+				font-weight: 700
+				letter-spacing: 0.67px
+				vertical-align: bottom
+				line-height: 20px
+		&__timer
+			position: absolute
+			top: 10px
+			right: 17px
+			color: #697b8c
+			font-size: 14px
+			font-weight: 600
+			letter-spacing: 0.47px
+			cursor: pointer
+		&__buy
+			position: absolute
+			bottom: 10px
+			right: 17px
+	&-option
+		display: flex
+		flex-direction: row
+		&__type
+			height: 19px
+			width: 130px
+			color: #262b3a
+			font-size: 14px
+			font-weight: 400
+		&-switcher
+			float: right
+			display: inline-block
+			color: red
+			vertical-align: middle
+			line-height: 10px
+			font-size: 0
+			&__color
+				display: inline-block
+				color: red
+				font:  0/0 a
+				width: 14px
+				height: 14px
+				border-radius: 58px
+				line-height: 0
+				margin-left: 8px
+				cursor: pointer
+				position: relative
+				&[data-color="blue"]
+					background-color: #226575
+					border: 1px solid transparent
+				&[data-color="white"]
+					background-color: #ffffff
+					border: 1px solid #000000
+				&--active[data-color="white"]
+					&:after
+						background-color: #000000
+				&[data-color="green"]
+					background-color: #91b670
+					border: 1px solid transparent
+				&[data-color="red"]
+					background-color: #A22D34
+					border: 1px solid transparent
+				&[data-color="brown"]
+					background-color: #3E3121
+					border: 1px solid transparent
+				&[data-color="yellow"]
+					background-color: #F2C715
+					border: 1px solid transparent
+				&[data-color="grey"]
+					background-color: #8F9093
+					border: 1px solid transparent
+				&[data-color="black"]
+					background-color: #070B0E
+					border: 1px solid transparent
+				&[data-color="pink"]
+					background-color: #CB6386
+					border: 1px solid transparent
+				&[data-color="beige"]
+					background-color: #C1AB96
+					border: 1px solid transparent
+				
+				&--active
+					&:after
+						content: ''
+						position: absolute
+						top: 3px
+						right: 3px
+						width: 6px
+						height: 6px
+						border-radius: 58px
+						background-color: #ffffff
+	&-descriptionFull
+		margin-top: 13px
+		color: #000000
+		font-size: 14px
+		font-weight: 400
+		line-height: 24px
+		list-style-type: disc
+		padding-left: 18px
+
+	&-switcher
+		overflow: hidden
+		margin-top: 30px
+		background: #fff
+		&__tabButton
+			position: relative
+			height: 35px
+			line-height: 35px
+			padding: 0 22px
+			color: #262b3a
+			font-size: 16px
+			font-weight: 700
+			background: #fff
+			overflow: hidden
+			&--active
+				z-index: 10
+				border: 1px solid #697b8c
+				border-bottom: none
+				
+		&__tabs
+			z-index: 9
+			margin-top: -2px
+			border: 1px solid #697b8c
+	&-detailInfo
+		margin: 20px 10px
+		&__row
+			display: flex
+			flex-direction: row
+			height: 30px
+			align-items: center
+			> div
+				padding: 6px
+				flex: 1 0 50%
+				color: #000000
+				font-size: 14px
+				font-weight: 400
+				line-height: 24px
+		&__row:nth-child(even)
+			background: #fff
+		&__row:nth-child(odd)
+			background: #f2f4ff
+	&-customerReview
+		padding: 22px 20px 12px
+
+		&__itemInfo
+			display: flex
+			flex-direction: row
+			&__avatar
+				width: 26px
+				height: 26px
+				background-color: #7186e6
+				border-radius: 50%
+				margin-right: 12px
+			&__title
+				color: #000000
+				font-size: 14px
+				font-weight: 700
+				line-height: 24px
+				margin-right: 40px
+			&__star
+				img
+					margin: 0 3px
+					width: 12px
+					height: 12px
+					object-fit: cover
+			&__date
+				margin-left: auto
+				color: #000000
+				font-size: 14px
+				font-weight: 400
+				line-height: 24px
+		&__item__rev
+			margin-top: 10px
+			width: 100%
+			word-wrap: break-word
+			color: #000000
+			font-size: 14px
+			font-weight: 400
+		
+		&-switcher
+			display: flex
+			flex-direction: row
+			margin-top: 12px
+			&__tabButton
+				width: 70px
+				height: 4px
+				background-color: #becfde
+				margin: 0 6px
+				&--active
+					background-color: #7186e6
+				&:first-child
+					margin-left: auto	
+				&:last-child
+					margin-right: auto	

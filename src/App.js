@@ -3,15 +3,26 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom'
 import Item from './pages/Item.js'
+import Popup from './pages/Popup.js'
 import Dashboard from './pages/Dashboard.js'
 import Login from './pages/Login.js'
+import Page from './pages/Page.js'
 import Auth from './store/AuthStore.js'
 import Store from './store/Store.js'
 
+const prod = process.env.REACT_APP_BUILD;
 
+const paths = {
+  main: prod ? '/system/' : '/',
+  dashboard:  prod ? '/system/dashboard/' : '/dashboard',
+  banner:  prod ? '/system/banner/' : '/banner',
+  popup:  prod ? '/system/popup/' : '/popup',
+  page:  prod ? '/system/page/' : '/page'
+}
 
 class App extends Component {
   async componentWillMount() {
@@ -35,9 +46,14 @@ class App extends Component {
     return(
       <Router>
       <div>
-        <Route path="/banner" component={Item}/>
-        <PrivateRoute path="/dashboard" component={Dashboard}/>
-        <Route path="/" exact component={Login}/>
+        <Switch>
+          <Route path={paths.main} exact component={Login}/>
+          <PrivateRoute path={paths.dashboard} component={Dashboard}/>
+          <Route path={paths.banner} component={Item}/>
+          <Route path={paths.popup} component={Popup}/>
+          <Route path={paths.page} component={Page}/>
+          <Route path='*' exact component={() => (<div>404<p>NOT FOUND</p></div>)} />
+        </Switch>
       </div>
     </Router>
     );
@@ -50,7 +66,7 @@ const PrivateRoute =  ({ component: Component, ...rest }) => (
        <Component {...rest}/>
     ) : (
       <Redirect to={{
-        pathname: '/login',
+        pathname: '/',
         state: { from: props.location }
       }} />)
   )} />

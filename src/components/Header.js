@@ -16,6 +16,7 @@ const isActive = (match, location,to) => {
   return ['/dashboard'].some(str => location.pathname.includes(str) )
 }
 
+
 class Header extends React.Component{
   constructor(props){
     super(props);
@@ -130,17 +131,20 @@ class Header extends React.Component{
 
   render(){
     let { photoURL, redirect } = this.state;
+    let { prod } = this.props; 
+
     if(redirect) return(
-      <Redirect to={'/'}/>
-    ) 
+      <Redirect to={`${process.env.REACT_APP_BUILD ? '/system/?prod=' + prod :  '/?prod=' + prod}`}/>
+    )
+     
     return(  <header className="f App__header">
                 <div className="f f-align-2-2 App__header-logo">
-                  <Link tabIndex='1' to={'/'} className="f f-align-2-2 App__header-logo__link"> <img src={logo} /> </Link>
+                <a tabIndex='1' href={`https://comin.co/system/`} className="f f-align-2-2 App__header-logo__link"> <img src={logo} /> </a>
                 </div>
                 <ul className="f f-align-1-2 App__header-menu">
                   <NavLink to={'/dashboard'} tabIndex='1' comp={isActive}>Dashboard</NavLink>
-                  <NavLink tabIndex='1' to={'/about'}>About Us</NavLink>
-                  <NavLink tabIndex='1' to={'/help'}>Support</NavLink>
+                  <li><a tabIndex='1' target="_blank" href='https://comin.co/'>About Us</a></li>
+                  <li><a tabIndex='1' target="_blank" href='https://comin.co/contacts/'>Support</a></li>
                 </ul>
                 <div className="f f-align-2-2 App__header-account">
                   <button tabIndex='2' className="App__header-logout" onClick={this.logout}>Logout</button>

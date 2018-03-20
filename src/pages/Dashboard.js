@@ -10,25 +10,34 @@ import TxForm from './../components/TxForm.js';
 import TxInput from './../components/TxInput.js';
 import Share from './../components/Share.js';
 import { Timeline } from 'react-twitter-widgets'
+import items from './../products.js';
+import Modal from './../components/Modal.js';
 
+const prod = process.env.REACT_APP_BUILD;
+const paths = {
+  account: prod ? '/system/dashboard/account/' : '/dashboard/account',
+  dashboard:  prod ? '/system/dashboard/' : '/dashboard'
+}
 
 class Dashboard extends Component{
   
-    constructor(props) {
-      super(props);
-      this.state = { keyVal: props.location.state && props.location.state.keyVal != undefined ? props.location.state.keyVal : ''};
-    }
-
+  
+  constructor(props) {
+    super(props);
+    this.state = { keyVal: props.location.state && props.location.state.keyVal != undefined ? props.location.state.keyVal : '', prod: props.location.state && props.location.state.prod != undefined ? props.location.state.prod : ''};
+    this.close = this.close.bind(this);
+  }
+  
     componentDidMount(){
       let _self = this;
       Api.auth().onAuthStateChanged((user) => {
-        if(_self.state.keyVal === '' ){
+        if(_self.state.keyVal === '' || ! ('basicModal' in _self.state)){
           let { uid } = user ;
   
           Api.getRef(`users/${uid}`).once('value')
           .then(snapshot => {
-            let {keyVal} = snapshot.val();
-            _self.setState({keyVal: keyVal})
+            let {keyVal, prod, visited} = snapshot.val() || {keyVal: null};
+            _self.setState({keyVal, prod, uid, basicModal: !visited})
           });
         }
 
@@ -46,25 +55,39 @@ class Dashboard extends Component{
 
     }
 
+    close(){
+      let { keyVal, prod, basicModal, uid } = this.state;
+
+      // close popup
+      this.setState({ basicModal: false });
+      
+
+      // renew data with in user first visiting
+      let visited = true;
+      Api.getRef(`users/${uid}`).set({keyVal, prod, visited});
+    }
+
     render(){
-        let { keyVal } = this.state;
+        let { keyVal, prod, basicModal } = this.state;
         return (
           <div className="App Layout-app">
-            <Header/>
+            <Header prod={prod} />
             <div className="App-intro">
               <Sidebar/>
               <div className="App-intro__content">
                 <Switch>
                   <RoutePassProps
                     exact
-                    path={'/dashboard'}
+                    path={paths.dashboard}
                     component={Dash}
                     keyVal={keyVal}
-                  />
+                    prod={prod}
+                    />
                   <RoutePassProps
                     exact
-                    path={'/dashboard/account'}
+                    path={paths.account}
                     component={Account}
+                    prod={prod}
                   />
                 </Switch>
               </div>
@@ -81,6 +104,23 @@ class Dashboard extends Component{
                 />
               </div>
             </div>
+            <Modal className="fade" show={basicModal} onHide={this.close}>
+                <Modal.Header>
+                    <h2 className="">You are awesome!</h2>
+                </Modal.Header>
+                <Modal.Body>
+                    <p> Thank you for your registration, we appreciate your participation in our beta testing! </p>
+
+                    <p>Comin is in beta version, which means, that the software’s code is still under development and is not at the level of performance or compatibility of a final, generally available product offering. Software may have limited functionality and may be substantially modified prior to full release of the product. </p>
+
+                    <p>However, for your participation we grant you a certification code, which you will be able to use after the launch of Comin System. Certification code will provide you with a discount for further purchases via Comin and/or a one time discount for a certain category of goods.</p>
+                    <br/>
+                    <textarea style={{width: '100%'}} className={'App-intro__content-copy'} disabled value={'CODE: ' + keyVal } />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button type="button" className="btn btn-primary" onClick={this.close}>Close</button>
+                </Modal.Footer>
+            </Modal>
           </div>
         );
     }
@@ -116,12 +156,20 @@ class Dashboard extends Component{
         var successful = document.execCommand('copy');
         textAreaSelector.disabled = true;
       } catch (err) {
-        console.log('Ха ха - бери, и копируй руками');
+        console.trace(err.stack);
       }
     }
 
     render(){
       let {photoURL, displayName, email, uid} = this.state;
+      let { prod } = this.props;
+      if(prod != "no-ref"){
+        prod = 'cominsystem' + prod;
+      }
+      if(prod === "no-ref"){
+        prod = '';
+      }
+
       return [
         <div key="1" className="App-intro__content__in  App-intro__account">
           <div className="App-intro__account__image"> <img src={photoURL}/> </div>
@@ -136,25 +184,28 @@ class Dashboard extends Component{
           <Share/>
           <p className='u-mt-5'>Your share link: </p>
           <div className={'f f-align-1-2 u-my-2'} >
-            <textarea style={{width: '100%'}} className={'App-intro__content-copy'} disabled value={document.location.href} />
-            <button className="btn btn-primiry" onClick={this.copy}> COPY </button>
+            <textarea style={{width: '100%'}} className={'App-intro__content-copy'} disabled value={'https://comin.co/' + prod} />
+            <button className="btn btn-primary" onClick={this.copy}> COPY </button>
           </div>
         </div>]
     }
   }
   
-  class Dash extends Component{
+class Dash extends Component{
     constructor(props) {
       super(props);      
-      this.state = { messages: [], passed: undefined }; // <- set up react state
+      this.state = { prod: '', passed: undefined };
       this.onSubmit = this.onSubmit.bind(this);
       this.copy = this.copy.bind(this);
     }
 
     componentWillReceiveProps(newProps){
-      let {keyVal} = newProps;
+      let {keyVal, prod} = newProps;
       if(keyVal != this.props.keyVal){
         this.setState({keyVal})
+      }
+      if(prod != this.props.prod){
+        this.setState({prod})
       }
 
     }
@@ -172,7 +223,7 @@ class Dashboard extends Component{
       e.preventDefault();
       let _self = this;
       let {keyVal} = form;
-      Api.getRef('users').orderByChild('key').equalTo(keyVal).once('value')
+      Api.getRef('users').orderByChild('keyVal').equalTo(keyVal).once('value')
       .then(snapshot => {
         if(null !== snapshot.val()){
           instance.clearFields();
@@ -197,24 +248,32 @@ class Dashboard extends Component{
         var successful = document.execCommand('copy');
         textAreaSelector.disabled = true;
       } catch (err) {
-        console.log('Ха ха - бери, и копируй руками');
+        console.trace(err.stack);
       }
     }
 
+    getDiscount(productId){
+      let product = items.filter( p => ( p.productId === productId))
+      if( product.length > 0)
+        return product[0].saleAmount
+      return '...'
+    }
+
     render(){
-      let { keyVal } = this.props;
+      let { keyVal, prod } = this.props;
       let { passed } = this.state;
 
+      
       return[
         <div key="1" className="App-intro__content__in">
           <h2 className="u-text-font__light">Thank you for registration!</h2>
           <hr className="u-my-3"/>
           <p className='u-mt-5'>Your promo code: </p>
-          <div className={'f f-align-1-2 u-my-2'} >
+          <div className={'f f-align-1-2 u-my-2 f-wrap'} >
             <textarea className={'App-intro__content-copy'} disabled value={keyVal} />
-            <button className="btn btn-primiry" onClick={this.copy}> COPY </button>
+            <button className="btn btn-primary" onClick={this.copy}> COPY </button>
           </div>
-          <p>This promo code gives you the opportunity to get a discount on this category of goods up to $50.</p>
+          <p>However, for your participation we grant you a certification code, which you will be able to use after the launch of Comin System. Certification code will provide you with a discount up to {`${this.getDiscount(prod)}`} for further purchases via Comin and/or a one time discount for a certain category of goods.</p>
         </div>,
         <div key="2" className="App-intro__content__in">
           <p>Enter your promo code: </p> 
@@ -222,7 +281,7 @@ class Dashboard extends Component{
       
               <TxInput tag="input" type="text" name="keyVal" validate={[{ minLength: 10 }, "required"]} className="field-block u-my-3" placeholder="number" />
 
-              <TxInput type="submit" autoValidate={false} value="CHECK" style={{ float: "right" }} className={"submit-post btn btn-primiry"} />
+              <TxInput type="submit" autoValidate={false} value="CHECK" style={{ float: "right" }} className={"submit-post btn btn-primary"} />
           </TxForm>
           { passed !== undefined &&  passed === false  && 
             <p className={"App-intro__content__nofound"} >NO FOUND</p> 
