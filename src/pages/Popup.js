@@ -110,11 +110,11 @@ export default class Popup extends Component {
             (!product || !activeColor) ? <div>Loading</div>:
             <div className="Layout-iframe" >
                 <div className="Popup">
-                    <div className="f f-row">
+                    <div className="Popup-section f f-row">
                         <div className="Popup-gallery">
                             <div className="Popup-gallery__feature" >
-                                <div className="Popup-gallery__feature__in" onMouseMove={
-                                this.onMouseMoveFeature} onMouseEnter={this.onMouseEnterFeature} onMouseLeave={this.onMouseLeaveFeature} ><LazyImage load={product[currentColor][currentThumbnail]}/>
+                                <div className="Popup-gallery__feature__in"  /* onMouseMove={
+                                this.onMouseMoveFeature} onMouseEnter={this.onMouseEnterFeature} onMouseLeave={this.onMouseLeaveFeature} */  ><LazyImage load={product[currentColor][currentThumbnail]}/>
                                 
                                 <div id="enlargeRange" className="Popup-gallery__feature__enlargeRange"></div>
                                 </div>

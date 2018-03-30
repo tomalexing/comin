@@ -31,7 +31,11 @@ export class LazyImage extends React.Component {
   
     load(props) {
       props.load().then((src) => {
-        let image = new Image; 
+        let image = new Image;
+        let div = document.createElement('div');
+        div.classList = 'Item__image__placeholder';
+        div.innerHTML = 'Loading';
+        this.node.appendChild(div);
         image.src = src;
         image.onload = () => {
             if(this.node){

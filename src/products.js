@@ -25,97 +25,97 @@ const items = [
     //         red: () => import('./img/item2-red.png')
     //     }
     // },
-    {
-        productId: '1',
-        priceNew: '$49.00',
-        priceOld: '$99.00',
-        title: 'Heated Blanket',
-        fullTitle: 'MicroPlush Sherpa Electric Heated Blanket Full Denim',
-        reviews: {
-            count: 3,
-            items: [{
-                name: 'Zig',
-                data: 'July 15, 2016',
-                rev: 'This is a very nice blanket. Very soft and light weight, the wires are very thin, and the control box is easy to use and lights up in the dark. I bought the Queen size it had dual controls. Ample size for the bed, hangs down a foot on both sides, and 18 inches at the foot of the bed leaving 9 inches at the top of the bed. So if you wanted to have the blanket higher at the top there is ample length to do so and have your feet well covered.'
-            },
-            {
-                name: 'shog',
-                data: 'June 29, 2016',
-                rev: 'My always-cold girlfriend didn\'t know about electric blankets. This thing blew her mind. It became a sanctuary for her and the cats and to a lesser extent me, throughout the winter. I, who am experienced in the ways of electric blankets, find this a step above the usual quality. The control unit has a very clear glowing digital display and a very intuitive interface. When the season ended we just dropped it in a tub of warm water with oxi clean, rinse, line dry, done.'
-            },
-            {
-                name: 'Kim',
-                data: 'September 5, 2016',
-                rev: 'Love this blanket. It is very very soft and miraculously it is made of fabric that does not attract cat fur! Heats up quickly, and effective at even low settings; I use it under my very lightweight silk duvet. I wish manufacturers would stop making self shut-off controls, I don\'t think they are necessary. But I turn control off and then on again just before going to sleep, as an easy work around. The contol is easy to use even in the dark and the blanket is a lovely cream color.'
-            }]
-        },
-        fullDescription: [
-            'Energy Saving',
-            'Digital control provides therapeutic warmth with 10 heat settings',
-            'Machine washable for your convenience, Packaged in a reusable zipper bag',
-            '100% Polyester Microplush top Sherpa Bottom, Ultra-thin wire for added comfort Five Year Manufacturer Warranty'
-        ],
-        detailInfo: [
-            {name: 'Package Dimensions',
-            info: '16.6 x 13.3 x 10.6 inches' },
-            {name: 'Item Weight',
-            info: '7.33 pounds' },
-            {name: 'Shipping Weight',
-            info: '7.33 pounds' },
-            {name: 'Manufacturer',
-            info: 'Biddeford' },
-            {name: 'ASIN',
-            info: 'B076B6XB8T' },
-        ],
-        sale: '-50%',
-        saleAmount: '$50',
-        images: {
-            blue: () => import('./img/Heated_Blanket_Blue_main.jpg'),
-            beige: () => import('./img/Heated_Blanket_Beige_main.jpg'),
-            red: () => import('./img/Heated_Blanket_Red_main.jpg'),
-            green: () => import('./img/Heated_Blanket_Green_main.jpg')
-        },
-        beige:[
-            () => import('./img/Heated_Blanket_Beige_main.jpg'),
-            () => import('./img/Heated_Blanket_Beige_1.jpg'),
-            () => import('./img/Heated_Blanket_Beige_2.jpg')
-        ],
-        beigeThumbnail:[
-            () => import('./img/Heated_Blanket_Beige_main_thumbnail.jpg'),
-            () => import('./img/Heated_Blanket_Beige_1_thumbnail.jpg'),
-            () => import('./img/Heated_Blanket_Beige_2_thumbnail.jpg')
-        ],
-        blue:[
-            () => import('./img/Heated_Blanket_Blue_main.jpg'),
-            () => import('./img/Heated_Blanket_Blue_1.jpg'),
-            () => import('./img/Heated_Blanket_Blue_2.jpg')
-        ],
-        blueThumbnail:[
-            () => import('./img/Heated_Blanket_Blue_main_thumbnail.jpg'),
-            () => import('./img/Heated_Blanket_Blue_1_thumbnail.jpg'),
-            () => import('./img/Heated_Blanket_Blue_2_thumbnail.jpg')
-        ],
-        red:[
-            () => import('./img/Heated_Blanket_Red_main.jpg'),
-            () => import('./img/Heated_Blanket_Red_1.jpg'),
-            () => import('./img/Heated_Blanket_Red_2.jpg')
-        ],
-        redThumbnail:[
-            () => import('./img/Heated_Blanket_Red_main_thumbnail.jpg'),
-            () => import('./img/Heated_Blanket_Red_1_thumbnail.jpg'),
-            () => import('./img/Heated_Blanket_Red_2_thumbnail.jpg')
-        ],
-        green:[
-            () => import('./img/Heated_Blanket_Green_main.jpg'),
-            () => import('./img/Heated_Blanket_Green_1.jpg'),
-            () => import('./img/Heated_Blanket_Green_2.jpg')
-        ],
-        greenThumbnail:[
-            () => import('./img/Heated_Blanket_Green_main_thumbnail.jpg'),
-            () => import('./img/Heated_Blanket_Green_1_thumbnail.jpg'),
-            () => import('./img/Heated_Blanket_Green_2_thumbnail.jpg')
-        ],
-    },
+    // {
+    //     productId: '1',
+    //     priceNew: '$49.00',
+    //     priceOld: '$99.00',
+    //     title: 'Heated Blanket',
+    //     fullTitle: 'MicroPlush Sherpa Electric Heated Blanket Full Denim',
+    //     reviews: {
+    //         count: 3,
+    //         items: [{
+    //             name: 'Zig',
+    //             data: 'July 15, 2016',
+    //             rev: 'This is a very nice blanket. Very soft and light weight, the wires are very thin, and the control box is easy to use and lights up in the dark. I bought the Queen size it had dual controls. Ample size for the bed, hangs down a foot on both sides, and 18 inches at the foot of the bed leaving 9 inches at the top of the bed. So if you wanted to have the blanket higher at the top there is ample length to do so and have your feet well covered.'
+    //         },
+    //         {
+    //             name: 'shog',
+    //             data: 'June 29, 2016',
+    //             rev: 'My always-cold girlfriend didn\'t know about electric blankets. This thing blew her mind. It became a sanctuary for her and the cats and to a lesser extent me, throughout the winter. I, who am experienced in the ways of electric blankets, find this a step above the usual quality. The control unit has a very clear glowing digital display and a very intuitive interface. When the season ended we just dropped it in a tub of warm water with oxi clean, rinse, line dry, done.'
+    //         },
+    //         {
+    //             name: 'Kim',
+    //             data: 'September 5, 2016',
+    //             rev: 'Love this blanket. It is very very soft and miraculously it is made of fabric that does not attract cat fur! Heats up quickly, and effective at even low settings; I use it under my very lightweight silk duvet. I wish manufacturers would stop making self shut-off controls, I don\'t think they are necessary. But I turn control off and then on again just before going to sleep, as an easy work around. The contol is easy to use even in the dark and the blanket is a lovely cream color.'
+    //         }]
+    //     },
+    //     fullDescription: [
+    //         'Energy Saving',
+    //         'Digital control provides therapeutic warmth with 10 heat settings',
+    //         'Machine washable for your convenience, Packaged in a reusable zipper bag',
+    //         '100% Polyester Microplush top Sherpa Bottom, Ultra-thin wire for added comfort Five Year Manufacturer Warranty'
+    //     ],
+    //     detailInfo: [
+    //         {name: 'Package Dimensions',
+    //         info: '16.6 x 13.3 x 10.6 inches' },
+    //         {name: 'Item Weight',
+    //         info: '7.33 pounds' },
+    //         {name: 'Shipping Weight',
+    //         info: '7.33 pounds' },
+    //         {name: 'Manufacturer',
+    //         info: 'Biddeford' },
+    //         {name: 'ASIN',
+    //         info: 'B076B6XB8T' },
+    //     ],
+    //     sale: '-50%',
+    //     saleAmount: '$50',
+    //     images: {
+    //         blue: () => import('./img/Heated_Blanket_Blue_main.jpg'),
+    //         beige: () => import('./img/Heated_Blanket_Beige_main.jpg'),
+    //         red: () => import('./img/Heated_Blanket_Red_main.jpg'),
+    //         green: () => import('./img/Heated_Blanket_Green_main.jpg')
+    //     },
+    //     beige:[
+    //         () => import('./img/Heated_Blanket_Beige_main.jpg'),
+    //         () => import('./img/Heated_Blanket_Beige_1.jpg'),
+    //         () => import('./img/Heated_Blanket_Beige_2.jpg')
+    //     ],
+    //     beigeThumbnail:[
+    //         () => import('./img/Heated_Blanket_Beige_main_thumbnail.jpg'),
+    //         () => import('./img/Heated_Blanket_Beige_1_thumbnail.jpg'),
+    //         () => import('./img/Heated_Blanket_Beige_2_thumbnail.jpg')
+    //     ],
+    //     blue:[
+    //         () => import('./img/Heated_Blanket_Blue_main.jpg'),
+    //         () => import('./img/Heated_Blanket_Blue_1.jpg'),
+    //         () => import('./img/Heated_Blanket_Blue_2.jpg')
+    //     ],
+    //     blueThumbnail:[
+    //         () => import('./img/Heated_Blanket_Blue_main_thumbnail.jpg'),
+    //         () => import('./img/Heated_Blanket_Blue_1_thumbnail.jpg'),
+    //         () => import('./img/Heated_Blanket_Blue_2_thumbnail.jpg')
+    //     ],
+    //     red:[
+    //         () => import('./img/Heated_Blanket_Red_main.jpg'),
+    //         () => import('./img/Heated_Blanket_Red_1.jpg'),
+    //         () => import('./img/Heated_Blanket_Red_2.jpg')
+    //     ],
+    //     redThumbnail:[
+    //         () => import('./img/Heated_Blanket_Red_main_thumbnail.jpg'),
+    //         () => import('./img/Heated_Blanket_Red_1_thumbnail.jpg'),
+    //         () => import('./img/Heated_Blanket_Red_2_thumbnail.jpg')
+    //     ],
+    //     green:[
+    //         () => import('./img/Heated_Blanket_Green_main.jpg'),
+    //         () => import('./img/Heated_Blanket_Green_1.jpg'),
+    //         () => import('./img/Heated_Blanket_Green_2.jpg')
+    //     ],
+    //     greenThumbnail:[
+    //         () => import('./img/Heated_Blanket_Green_main_thumbnail.jpg'),
+    //         () => import('./img/Heated_Blanket_Green_1_thumbnail.jpg'),
+    //         () => import('./img/Heated_Blanket_Green_2_thumbnail.jpg')
+    //     ],
+    // },
 
 
     
@@ -165,8 +165,8 @@ const items = [
         sale: '-70%',
         saleAmount: '$20',
         images: {
-            black: () => import('./img/pillows_black_main.jpg'),
             green: () => import('./img/pillows_green_main.jpg'),
+            black: () => import('./img/pillows_black_main.jpg'),
             pink: () => import('./img/pillows_pink_main.jpg'),
             red: () => import('./img/pillows_red_main.jpg')},
         black:[

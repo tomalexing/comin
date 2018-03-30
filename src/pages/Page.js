@@ -25,7 +25,7 @@ class Page extends React.Component{
         function createPopup({productId, date}){
             var wrapper = document.createElement('div');
             var style = document.createElement('style');
-            style.innerText = ".Comin{z-index: 10000000; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(42,42,42, .4); overflow-x: hidden; overflow-y: auto;}";
+            style.innerText = ".Comin{z-index: 10000000; height: 100%; height: 100vh; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(42,42,42, .4); overflow-x: hidden; overflow-y: auto;}";
             style.innerText += ".Comin__btn{width: 40px; height: 40px; background-color: rgba(113, 134, 230, 0.85); position: absolute; top: 0; right: 0;} .Comin__btn:after, .Comin__btn:before{content: ''; width: 2px; height: 34px; background: #fff; display: block; position: absolute; right: 17px; top: 3px;} .Comin__btn:before{ transform: rotate(45deg);}.Comin__btn:after{ transform: rotate(-45deg);}" 
 
             wrapper.classList = 'Comin';
@@ -33,11 +33,17 @@ class Page extends React.Component{
             
             var ifrmPopup = document.createElement("iframe");
             ifrmPopup.setAttribute("src", `${process.env.REACT_APP_BUILD ? "//comin.co/system/popup?id="+productId+"&date=" + date : "//localhost:3000/popup?id="+productId+"&date=" + date}`);
-            ifrmPopup.style.width = "700px";
-            ifrmPopup.style.height = "710px";
-            ifrmPopup.style.margin = "30px 0";
-            ifrmPopup.style.position = "absolute";
-            ifrmPopup.style.left = (window.outerWidth - 700)/2 + "px";
+            if(window.outerWidth > 700){
+                ifrmPopup.style.width = "701px";
+                ifrmPopup.style.height = "710px";
+                ifrmPopup.style.margin = "30px 0";
+                ifrmPopup.style.position = "absolute";
+                ifrmPopup.style.left = (window.outerWidth - 700)/2 + "px";
+            }else{
+                ifrmPopup.style.width = "100%";
+                ifrmPopup.style.height = "1146px";
+                ifrmPopup.style.margin = "60px 10px";
+            }
             
             var btn = document.createElement("button");
             btn.classList = 'Comin__btn';

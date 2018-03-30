@@ -950,8 +950,20 @@ input[type='submit']:focus {
     font-size: 12px;
     letter-spacing: 1px;
     color: #fff; }
-  .Item__image img {
-    max-width: 100%; }
+  .Item__image {
+    z-index: 9;
+    position: relative; }
+    .Item__image__placeholder {
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      left: 50%;
+      margin-left: -29px;
+      margin-top: -14px;
+      background-color: #fff;
+      display: inline-block; }
+    .Item__image img {
+      max-width: 100%; }
   .Item-timer {
     position: absolute;
     top: 40px;
@@ -1370,12 +1382,20 @@ input[type='submit']:focus {
 
 .Popup {
   padding: 20px;
-  width: 700px;
+  max-width: 700px;
   color: #000;
-  background: #fff; }
+  background: #fff;
+  width: 100%; }
+  @media only screen and (max-width: 700px) {
+    .Popup-section {
+      width: 100%;
+      flex-direction: column; } }
   .Popup-gallery {
     width: 310px;
     flex: 1 0 310px; }
+    @media only screen and (max-width: 700px) {
+      .Popup-gallery {
+        width: 100%; } }
     .Popup-gallery__feature {
       display: flex;
       justify-content: center;
@@ -1385,7 +1405,7 @@ input[type='submit']:focus {
       overflow: hidden; }
       .Popup-gallery__feature__in {
         position: relative;
-        cursor: zoom-in; }
+        touch-action: none; }
         .Popup-gallery__feature__in:hover .Popup-gallery__feature__enlargeRange {
           visibility: visible; }
       .Popup-gallery__feature__enlargeRange {
@@ -1443,6 +1463,11 @@ input[type='submit']:focus {
   .Popup-description {
     margin-left: 20px;
     position: relative; }
+    @media only screen and (max-width: 700px) {
+      .Popup-description {
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 10px; } }
     .Popup-description__title {
       color: #262b3a;
       font-size: 16px;
@@ -1588,7 +1613,8 @@ input[type='submit']:focus {
   .Popup-switcher {
     overflow: hidden;
     margin-top: 30px;
-    background: #fff; }
+    background: #fff;
+    white-space: nowrap; }
     .Popup-switcher__tabButton {
       position: relative;
       height: 35px;
@@ -1607,6 +1633,9 @@ input[type='submit']:focus {
       z-index: 9;
       margin-top: -2px;
       border: 1px solid #697b8c; }
+      @media only screen and (max-width: 700px) {
+        .Popup-switcher__tabs {
+          margin-bottom: 20px; } }
   .Popup-detailInfo {
     margin: 20px 10px; }
     .Popup-detailInfo__row {

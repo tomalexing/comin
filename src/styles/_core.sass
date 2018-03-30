@@ -23,8 +23,20 @@
 		font-size: 12px
 		letter-spacing: 1px
 		color: #fff
-	&__image img
-		max-width: 100%
+	&__image
+		z-index: 9
+		position: relative
+		&__placeholder
+			position: absolute
+			z-index: 10
+			top: 50%
+			left: 50%
+			margin-left: -29px
+			margin-top: -14px
+			background-color: #fff
+			display: inline-block
+		img
+			max-width: 100%
 	&-timer
 		position: absolute
 		top: 40px
@@ -455,12 +467,19 @@
 
 .Popup
 	padding: 20px
-	width: 700px
+	max-width: 700px
 	color: #000
 	background: #fff
+	width: 100%
+	&-section
+		+r(700)
+			width: 100%
+			flex-direction: column
 	&-gallery
 		width: 310px
 		flex: 1 0 310px
+		+r(700)
+			width: 100%
 		&__feature
 			display: flex
 			justify-content: center
@@ -470,7 +489,8 @@
 			overflow: hidden
 			&__in
 				position: relative
-				cursor: zoom-in
+				// cursor: zoom-in
+				touch-action: none
 				&:hover .Popup-gallery__feature__enlargeRange
 					visibility: visible
 			&__enlargeRange
@@ -527,6 +547,10 @@
 	&-description
 		margin-left: 20px
 		position: relative
+		+r(700)
+			width: 100%
+			margin-left: 0px
+			margin-top: 10px
 		&__title
 			color: #262b3a
 			font-size: 16px
@@ -677,6 +701,7 @@
 		overflow: hidden
 		margin-top: 30px
 		background: #fff
+		white-space: nowrap
 		&__tabButton
 			position: relative
 			height: 35px
@@ -696,6 +721,8 @@
 			z-index: 9
 			margin-top: -2px
 			border: 1px solid #697b8c
+			+r(700)
+				margin-bottom: 20px
 	&-detailInfo
 		margin: 20px 10px
 		&__row
